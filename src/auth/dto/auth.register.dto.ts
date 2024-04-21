@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsNotEmpty, IsString, IsStrongPassword } from "class-validator";
+import { IsEmail, IsNotEmpty, IsString, MinLength } from "class-validator";
 
 export class AuthRegisterDto {
     @ApiProperty()
@@ -24,6 +24,7 @@ export class AuthRegisterDto {
 
     @ApiProperty()
     @IsString()
+    @MinLength(12, { message: "Пароль должен состоять из более 12 символов" })
     @IsNotEmpty({ message: "Укажите пароль пользователя" })
     password: string;
 }
