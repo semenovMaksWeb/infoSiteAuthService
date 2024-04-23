@@ -1,9 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { AuthRegisterDto } from './dto/auth.register.dto';
+import { AuthRepository } from './auth.repository';
 
 @Injectable()
 export class AuthService {
-    public register(authRegisterDto: AuthRegisterDto) {
-        return 1;
+    constructor(
+        private authRepository: AuthRepository,
+    ) { }
+    public async register(authRegisterDto: AuthRegisterDto) {
+       return await this.authRepository.resister(authRegisterDto);
     }
 }
