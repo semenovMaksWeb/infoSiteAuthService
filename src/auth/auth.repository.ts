@@ -1,6 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import { InjectConnection } from "nest-postgres";
-import { Client } from 'pg';
 import { AuthRegisterDto } from "./dto/auth.register.dto";
 import { SqlService } from "src/sql/sql.service";
 

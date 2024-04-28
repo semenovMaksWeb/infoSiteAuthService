@@ -8,6 +8,6 @@ export class AuthService {
         private authRepository: AuthRepository,
     ) { }
     public async register(authRegisterDto: AuthRegisterDto) {
-       return await this.authRepository.resister(authRegisterDto);
+        return await this.authRepository.resister(authRegisterDto);
     }
 }

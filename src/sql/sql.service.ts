@@ -8,6 +8,7 @@ export class SqlService {
         @InjectConnection('MainBd')
         private dbConnection: Client,
     ) { }
+
     public async sqlFuncitonRun(name: string, params: any) {
         const param = this.parsingParams(params);
         const SQL_STRING = `select * from ${name}(${param})`;
