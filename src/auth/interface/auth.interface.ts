@@ -17,7 +17,7 @@ export enum statusCodeEnum {
 }
 
 export interface AuthErrorsMessage {
-    id: string;
+    field: string;
     text: string[];
 }
 

@@ -6,7 +6,7 @@ export class ErrorsService {
     public errorRegister(): AuthErrors {
         return {
             statusCode: HttpStatus.BAD_REQUEST,
-            message: [{ id: "1", text: ["Текущая почта уже занята"] }]
+            message: [{ field: "email", text: ["Текущая почта уже занята"] }]
         }
     }
 }
