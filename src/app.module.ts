@@ -1,3 +1,4 @@
+import { SqlModule } from './sql/sql.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
@@ -5,6 +6,7 @@ import { PostgresModule } from 'nest-postgres';
 
 @Module({
   imports: [
+    SqlModule,
     ConfigModule.forRoot({ isGlobal: true }),
     AuthModule,
     PostgresModule.forRoot({

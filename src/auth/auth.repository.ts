@@ -2,28 +2,18 @@ import { Injectable } from "@nestjs/common";
 import { InjectConnection } from "nest-postgres";
 import { Client } from 'pg';
 import { AuthRegisterDto } from "./dto/auth.register.dto";
+import { SqlService } from "src/sql/sql.service";
 
 @Injectable()
 export class AuthRepository {
 
     constructor(
-        @InjectConnection('MainBd')
-        private dbConnection: Client,
+        private sqlService: SqlService,
     ) { }
 
+
     public async resister(authRegisterDto: AuthRegisterDto) {
-        const sql = `SELECT * FROM auth.register(
-            _name => $1, _surname => $2, _middlename => $3, _email => $4, _password => $5)`;
-        const result = await this.dbConnection.query(
-            sql,
-            [
-                authRegisterDto.name,
-                authRegisterDto.surname,
-                authRegisterDto.middlename,
-                authRegisterDto.email,
-                authRegisterDto.password
-            ]
-        );
+        const result = await this.sqlService.sqlFuncitonRun("auth.register", authRegisterDto);
         return result.rows;
     }
 }
