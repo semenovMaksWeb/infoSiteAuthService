@@ -12,10 +12,6 @@ export interface AuthRepositoryRegisterReturn {
     status_: statusType;
 }
 
-export enum statusCodeEnum {
-    bad = 400
-}
-
 export interface AuthErrorsMessage {
     field: string;
     text: string[];

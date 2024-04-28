@@ -4,6 +4,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { PostgresModule } from 'nest-postgres';
+import { CONST_NAME } from './const/const';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { PostgresModule } from 'nest-postgres';
     AuthModule,
     PostgresModule.forRoot({
       connectionString: process.env.POSTGRES_CONNECT,
-    }, 'MainBd')
+    }, CONST_NAME.BD.CONNECTION_NAME)
   ],
   controllers: [],
   providers: [],

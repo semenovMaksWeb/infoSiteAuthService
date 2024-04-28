@@ -1,15 +1,17 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsEmail, IsNotEmpty, IsString, MinLength } from "class-validator";
+import { CONST_NAME } from "src/const/const";
 
+const REGISTER = CONST_NAME.TEXT_ERROR.REGISTER;
 export class AuthRegisterDto {
     @ApiProperty()
     @IsString()
-    @IsNotEmpty({ message: "Укажите имя пользователя" })
+    @IsNotEmpty({ message: REGISTER.EMPTY_NAME })
     name: string;
 
     @ApiProperty()
     @IsString()
-    @IsNotEmpty({ message: "Укажите фамилию пользователя" })
+    @IsNotEmpty({ message: REGISTER.EMPTY_SURNAME })
     surname: string;
 
     @ApiProperty()
@@ -18,13 +20,16 @@ export class AuthRegisterDto {
 
     @ApiProperty()
     @IsString()
-    @IsEmail({}, { message: "Не валидно указан email" })
-    @IsNotEmpty({ message: "Укажите email пользователя" })
+    @IsEmail({}, { message: REGISTER.IS_EMAIL })
+    @IsNotEmpty({ message: REGISTER.EMPTY_EMAIL })
     email: string;
 
     @ApiProperty()
     @IsString()
-    @MinLength(12, { message: "Пароль должен состоять из более 12 символов" })
-    @IsNotEmpty({ message: "Укажите пароль пользователя" })
+    @MinLength(
+        CONST_NAME.VALIDATE.MIN_LENGTH_PASSWORD,
+        { message: REGISTER.MIN_LENGTH_PASSWORD }
+    )
+    @IsNotEmpty({ message: REGISTER.EMPTY_PASSWORD })
     password: string;
 }

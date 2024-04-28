@@ -1,11 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { InjectConnection } from "nest-postgres";
 import { Client } from "pg";
+import { CONST_NAME } from "src/const/const";
 
 @Injectable()
 export class SqlService {
     constructor(
-        @InjectConnection('MainBd')
+        @InjectConnection(CONST_NAME.BD.CONNECTION_NAME)
         private dbConnection: Client,
     ) { }
 
