@@ -6,11 +6,9 @@ import { SqlService } from "src/sql/sql.service";
 
 @Injectable()
 export class AuthRepository {
-
     constructor(
         private sqlService: SqlService,
     ) { }
-
 
     public async resister(authRegisterDto: AuthRegisterDto) {
         const result = await this.sqlService.sqlFuncitonRun("auth.register", authRegisterDto);
