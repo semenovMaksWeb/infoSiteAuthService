@@ -1,13 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { AuthRegisterDto } from './dto/auth.register.dto';
+import { ErrorsService } from 'src/errors/errors.service';
 import { AuthRepository } from './auth.repository';
+import { AuthRegisterDto } from './dto/auth.register.dto';
 
 @Injectable()
 export class AuthService {
     constructor(
         private authRepository: AuthRepository,
+        private errorsService: ErrorsService
     ) { }
+
     public async register(authRegisterDto: AuthRegisterDto) {
-        return await this.authRepository.resister(authRegisterDto);
+        const resultRegister = await this.authRepository.register(authRegisterDto);
+        if (resultRegister.status_ == 0) {
+            return this.errorsService.errorRegister();
+        }
+        return resultRegister;
     }
 }
