@@ -4,7 +4,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
 import { PostgresModule } from 'nest-postgres';
-import { CONST_NAME } from './const/const';
+import { CONST_NAME } from './lib/const/const';
 
 @Module({
   imports: [

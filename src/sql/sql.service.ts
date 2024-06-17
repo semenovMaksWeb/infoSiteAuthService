@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectConnection } from "nest-postgres";
 import { Client } from "pg";
-import { CONST_NAME } from "src/const/const";
+import { CONST_NAME } from "src/lib/const/const";
 
 @Injectable()
 export class SqlService {
