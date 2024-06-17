@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { ErrorsService } from 'src/errors/errors.service';
 import { AuthRepository } from './auth.repository';
-import { AuthRegisterDto } from './dto/auth.register.dto';
+import { AuthAuthorizationDto } from './dto/auth.authorization.dto';
+import { AuthregistrationDto } from './dto/auth.registration.dto';
 
 @Injectable()
 export class AuthService {
@@ -10,11 +11,17 @@ export class AuthService {
         private errorsService: ErrorsService
     ) { }
 
-    public async register(authRegisterDto: AuthRegisterDto) {
-        const resultRegister = await this.authRepository.register(authRegisterDto);
-        if (resultRegister.status_ == 0) {
-            return this.errorsService.errorRegister();
+    public async registration(authregistrationDto: AuthregistrationDto) {
+        const resultregistration = await this.authRepository.registration(authregistrationDto);
+        if (resultregistration.status_ == 0) {
+            return this.errorsService.errorregistration();
         }
-        return resultRegister;
+        return resultregistration;
+    }
+
+    public async authorization(authAuthorizationDto: AuthAuthorizationDto) {
+        const resultregistration = await this.authRepository.authorization(authAuthorizationDto);
+        return resultregistration;
+
     }
 }

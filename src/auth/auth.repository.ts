@@ -1,7 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { AuthRegisterDto } from "./dto/auth.register.dto";
+
 import { SqlService } from "src/sql/sql.service";
-import { AuthRepositoryRegisterReturn } from "./interface/auth.interface";
+import { AuthRepositoryAuthorizatioReturn, AuthRepositoryRegistrationReturn } from "./interface/auth.interface";
+import { AuthAuthorizationDto } from "./dto/auth.authorization.dto";
+import { AuthregistrationDto } from "./dto/auth.registration.dto";
 
 @Injectable()
 export class AuthRepository {
@@ -9,10 +11,17 @@ export class AuthRepository {
         private sqlService: SqlService,
     ) { }
 
-    public async register(
-        authRegisterDto: AuthRegisterDto
-    ): Promise<AuthRepositoryRegisterReturn> {
-        const result = await this.sqlService.sqlFuncitonRun("auth.register", authRegisterDto);
+    public async registration(
+        authregistrationDto: AuthregistrationDto
+    ): Promise<AuthRepositoryRegistrationReturn> {
+        const result = await this.sqlService.sqlFuncitonRun("auth.registration", authregistrationDto);
+        return result.rows[0];
+    }
+
+    public async authorization(
+        authAuthorizationDto: AuthAuthorizationDto
+    ): Promise<AuthRepositoryAuthorizatioReturn> {
+        const result = await this.sqlService.sqlFuncitonRun("auth.user_check_authorization", authAuthorizationDto);
         return result.rows[0];
     }
 }

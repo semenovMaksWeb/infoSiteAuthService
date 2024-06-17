@@ -18,4 +18,5 @@ import { ErrorsModule } from 'src/errors/errors.module';
         AuthRepository,
     ],
 })
+
 export class AuthModule { }

@@ -3,14 +3,17 @@ export const CONST_NAME = {
         /** Минимальное количество символов в пароле */
         MIN_LENGTH_PASSWORD: 12,
     },
+    
     BD: {
         CONNECTION_NAME: "MainBd"
     },
+
     TEXT_ERROR: {
         /** Ошибка при статусе 400 поле error в ответе */
         400: "Не валидно переданные данные",
-        /** Ошибки при запросе /register */
-        REGISTER: {
+        /** Ошибки при запросе /registration */
+        
+        registration: {
             /** Ошибки когда почта уже занята */
             UNIQUE_EMAIL: "Текущая почта уже занята",
             /** Ошибки когда пользователь не указал свое имя */
@@ -25,6 +28,11 @@ export const CONST_NAME = {
             MIN_LENGTH_PASSWORD: "Пароль должен состоять из более 12 символов",
             /** Ошибки когда пользователь не указал пароль */
             EMPTY_PASSWORD: "Укажите пароль пользователя"
+        },
+        /** Ошибки при запросе /authorization */
+        AUTHOHIZATION: {
+            EMPTY_EMAIL: "Вы не указали email",
+            EMPTY_PASSWORD: "Вы не указали пароль"
         }
     },
 }
